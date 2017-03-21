@@ -2,6 +2,7 @@ version: 2
 
 jobs:
   build:
+    working_directory: ~/jsonschema2pojo-rules-bettermaps
     docker:
       - image: maven:3.3.9
     steps:
