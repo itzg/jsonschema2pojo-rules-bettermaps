@@ -15,9 +15,31 @@ jobs:
           paths:
             - "~/.m2/repository"
       - run:
-          name: store test results
+          name: Release, if enabled
           command: |
-            mkdir -p $CIRCLE_TEST_REPORTS/junit/
-            cp target/surefire-reports/*.xml $CIRCLE_TEST_REPORTS/junit/
+            if [[ $RELEASE ]]; then
+              if [[ $GIT_USER_EMAIL ]]; then git config --global user.email "$GIT_USER_EMAIL" ; fi
+              if [[ $GIT_USER_NAME ]]; then git config --global user.name "$GIT_USER_NAME" ; fi
+              mvn -B release:prepare -DreleaseVersion=$RELEASE -DdevelopmentVersion=$NEXT
+            fi
+      - run:
+          name: Deploy, if tagged
+          command: |
+            if tag=$(git describe --exact-match 2> /dev/null) ; then
+              if [[ $tag == v* ]]; then
+                mvn -DskipTests -s .mvn/settings.xml deploy
+              fi
+            fi
 
-
+# To initiate a maven release:
+#
+# In CircleCI project settings > Checkout SSH Keys
+#   Make sure you have a user key allocated
+#
+# curl -X POST -H "Content-Type: application/json" -d '{
+#    "build_parameters": {
+#    	 "TAG": "v1.0",
+#        "RELEASE": "1.0",
+#        "NEXT": "1.1-SNAPSHOT"
+#    }
+#  }' "https://circleci.com/api/v1.1/project/github/itzg/jsonschema2pojo-rules-bettermaps/tree/master?circle-token=$CIRCLECI_API_TOKEN"
