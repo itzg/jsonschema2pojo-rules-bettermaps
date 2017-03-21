@@ -22,8 +22,7 @@ jobs:
               if [[ $GIT_USER_NAME ]]; then git config --global user.name "$GIT_USER_NAME" ; fi
               mvn -B release:prepare -DreleaseVersion=$RELEASE -DdevelopmentVersion=$NEXT
             fi
-      - run:
-          name: Deploy, if tagged
+      - deploy:
           command: |
             if tag=$(git describe --exact-match 2> /dev/null) ; then
               if [[ $tag == v* ]]; then
