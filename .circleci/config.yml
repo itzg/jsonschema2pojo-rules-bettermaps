@@ -1,2 +1,9 @@
 version: 2
 
+jobs:
+  build:
+    docker:
+      - image: maven:3.3.9
+    steps:
+      - checkout
+      - run: mvn package
