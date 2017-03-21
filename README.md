@@ -3,7 +3,7 @@ that identifies `additionalProperties` that only declare a simple type and gener
 `Map<String,TYPE>` where `TYPE` is the boxed type of the property, such as `String`, or `Integer`.
 
 To use it with the Maven plugin, add this artifact as a dependency of the plugin and set
-the `customRuleFactory` to `me.itzg.jsonschema2pojo.moremaps.MoreMapsRuleFactory`.
+the `customRuleFactory` to `me.itzg.jsonschema2pojo.bettermaps.BetterMapsRuleFactory`.
 
 For example,
 
