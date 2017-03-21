@@ -4,7 +4,7 @@
 
     <groupId>me.itzg</groupId>
     <artifactId>jsonschema2pojo-rules-bettermaps</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.2</version>
 
     <properties>
         <jsonschema2pojo.version>0.4.31</jsonschema2pojo.version>
@@ -13,7 +13,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:itzg/jsonschema2pojo-rules-bettermaps.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.0.2</tag>
     </scm>
 
     <dependencies>
