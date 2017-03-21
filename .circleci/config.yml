@@ -7,4 +7,11 @@ jobs:
       - image: maven:3.3.9
     steps:
       - checkout
+      - restore_cache:
+        key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
       - run: mvn package
+      - save_cache:
+        key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
+        paths:
+          - "~/.m2/repository"
+
