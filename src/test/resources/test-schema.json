@@ -1,0 +1,43 @@
+{
+  "type":"object",
+  "properties": {
+    "foo": {
+      "type": "string"
+    },
+    "bars": {
+      "type": "object",
+      "additionalProperties": {
+        "type":"string"
+      }
+    },
+    "times": {
+      "type": "object",
+      "additionalProperties": {
+        "type":"integer"
+      }
+    },
+    "baz": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "boo": {
+      "type": "object",
+      "properties": {
+        "hoo": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
