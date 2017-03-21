@@ -10,10 +10,6 @@ jobs:
       - restore_cache:
           key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
       - run: mvn package
-      - save_cache:
-          key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
-          paths:
-            - "~/.m2/repository"
       - run:
           name: Release, if enabled
           command: |
@@ -30,6 +26,10 @@ jobs:
                 mvn -DskipTests -s .mvn/settings.xml deploy
               fi
             fi
+      - save_cache:
+          key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
+          paths:
+            - "~/.m2/repository"
 
 # To initiate a maven release:
 #
