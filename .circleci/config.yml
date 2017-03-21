@@ -14,4 +14,7 @@ jobs:
           key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
           paths:
             - "~/.m2/repository"
+      - store_artifacts:
+          path: target/surfire-reports/
+          destination: surefire
 
