@@ -15,6 +15,6 @@ jobs:
           paths:
             - "~/.m2/repository"
       - store_artifacts:
-          path: target/surfire-reports/
+          path: target/surefire-reports/
           destination: surefire
 
