@@ -14,7 +14,10 @@ jobs:
           key: jsonschema2pojo-rules-bettermaps-{{.Branch}}
           paths:
             - "~/.m2/repository"
-      - store_artifacts:
-          path: target/surefire-reports/
-          destination: surefire
+      - run:
+          name: store test results
+          command: |
+            mkdir -p $CIRCLE_TEST_REPORTS/junit/
+            cp target/surefire-reports/*.xml $CIRCLE_TEST_REPORTS/junit/
+
 
