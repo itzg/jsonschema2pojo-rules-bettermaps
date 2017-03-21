@@ -23,6 +23,7 @@ jobs:
               mvn -B release:prepare -DreleaseVersion=$RELEASE -DdevelopmentVersion=$NEXT
             fi
       - deploy:
+          name: Deploy, if tagged
           command: |
             if tag=$(git describe --exact-match 2> /dev/null) ; then
               if [[ $tag == v* ]]; then
